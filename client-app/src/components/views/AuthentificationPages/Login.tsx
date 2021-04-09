@@ -1,23 +1,21 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import { Button, Paper} from "@material-ui/core/";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-//import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import AppContext from "../../../context/AppContext";
-import { InputLabel, MenuItem } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(7),
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    padding: theme.spacing(2),
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -60,23 +58,22 @@ export default function SignIn() {
 
   return (
     <Container component="main" maxWidth="xs" >
+      <Paper className={classes.paper}  elevation={3}>
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" style={{ fontWeight: "bold", fontFamily: "georgia" }}>
           Sign In
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
-
-          <Grid container spacing={2}>
-
+          <Grid container spacing={2} alignItems="flex-end">
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Username:</InputLabel>
-              <br>
-
-              </br>
+              <br/>
               <TextField
+                autoComplete="off"
+                label="Username"
                 style={{ fontWeight: "bold", fontFamily: "georgia" }}
                 variant="outlined"
+                color="primary"
                 margin="normal"
                 required
                 fullWidth
@@ -93,11 +90,10 @@ export default function SignIn() {
             </Grid>
 
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Password:</InputLabel>
-              <br>
-
-              </br>
+              <br/>
               <TextField
+                autoComplete="off"
+                label="Password"
                 style={{ fontWeight: "bold", fontFamily: "georgia" }}
                 variant="outlined"
                 margin="normal"
@@ -140,7 +136,7 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}></Box>
+      </Paper>
     </Container>
   );
 }

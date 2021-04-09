@@ -55,7 +55,7 @@ export default function EnterVitalSigns() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(vitalSigns)
-    const res = fetch("http://localhost:8500/saveVitalSigns", {
+    const res = fetch("http://localhost:5000/saveVitalSigns", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -80,10 +80,7 @@ export default function EnterVitalSigns() {
           <Grid container spacing={2}>
 
           <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>UserName of Patient:</InputLabel>
-              <br>
-
-              </br>
+              <br></br>
               <TextField
                 variant="outlined"
                 required
@@ -100,11 +97,8 @@ export default function EnterVitalSigns() {
                 }}
               />
             </Grid>
-            <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Body Temperature:</InputLabel>
-              <br>
-
-              </br>
+            <Grid item xs={12}>            
+              <br></br>
               <TextField
                 variant="outlined"
                 required
@@ -123,11 +117,8 @@ export default function EnterVitalSigns() {
             </Grid>
 
             
-            <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Heart Rate:</InputLabel>
-              <br>
-
-              </br>
+            <Grid item xs={12}>              
+              <br></br>
               <TextField
                 variant="outlined"
                 required
@@ -145,11 +136,8 @@ export default function EnterVitalSigns() {
               />
             </Grid>
 
-            <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Blood Pressure:</InputLabel>
-              <br>
-
-              </br>
+            <Grid item xs={12}>          
+            <br></br>
               <TextField
                 variant="outlined"
                 required
@@ -189,7 +177,7 @@ export default function EnterVitalSigns() {
               />
             </Grid>
           </Grid>
-          <Button style={{ color: 'black', fontFamily: 'georgia', backgroundColor: 'darkOrange', fontWeight: 'bold' }}
+          <Button style={{ color: 'black', fontFamily: 'georgia', backgroundColor: 'green', fontWeight: 'bold' }}
             type="submit"
             fullWidth
             variant="contained"

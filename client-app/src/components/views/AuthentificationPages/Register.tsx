@@ -1,25 +1,17 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-//import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
+import { Button, Paper, CssBaseline, TextField, Link }  from "@material-ui/core/";
+import { Grid, Typography, Container, FormControl, Select  } from "@material-ui/core/";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import AppContext from "../../../context/AppContext";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import { InputLabel, MenuItem } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(7),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    padding: theme.spacing(2),
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -51,7 +43,7 @@ export default function Register() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const res = fetch("http://localhost:8500/signup", {
+    const res = fetch("http://localhost:5000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,6 +63,7 @@ export default function Register() {
 
   return (
     <Container component="main" maxWidth="xs">
+      <Paper className={classes.paper}  elevation={3}>
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" className={classes.typography} style={{ fontWeight: "bold", fontFamily: "georgia" }}>
@@ -79,11 +72,10 @@ export default function Register() {
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>First Name:</InputLabel>
-              <br>
-
-              </br>
+              <br></br>
               <TextField
+                autoComplete="off"
+                label="First Name"
                 style={{ fontWeight: "bold", fontFamily: "georgia" }}
                 variant="outlined"
                 required
@@ -101,11 +93,10 @@ export default function Register() {
             </Grid>
 
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Last Name:</InputLabel>
-              <br>
-
-              </br>
+              <br></br>
               <TextField
+                autoComplete="off"
+                label="Last Name"
                 style={{ fontWeight: "bold", fontFamily: "georgia" }}
                 variant="outlined"
                 required
@@ -123,11 +114,10 @@ export default function Register() {
             </Grid>
 
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Username:</InputLabel>
-              <br>
-
-              </br>
+              <br></br>
               <TextField
+                autoComplete="off"
+                label="Username"
                 style={{ fontWeight: "bold", fontFamily: "georgia" }}
                 variant="outlined"
                 required
@@ -145,17 +135,15 @@ export default function Register() {
             </Grid>
 
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Password:</InputLabel>
-              <br>
-
-              </br>
+              <br></br>
               <TextField
+                autoComplete="off"
+                label="Password"
                 style={{ fontWeight: "bold", fontFamily: "georgia" }}
                 variant="outlined"
                 required
                 fullWidth
                 name="password"
-                label="Password"
                 type="password"
                 id="password"
                 value={userInfoData.password}
@@ -191,7 +179,7 @@ export default function Register() {
             </Grid>
           </Grid>
           <Button
-            style={{ color: "black", fontFamily: "georgia", backgroundColor: "darkOrange", fontWeight: "bold" }}
+            style={{ color: "black", fontFamily: "georgia", backgroundColor: "green", fontWeight: "bold" }}
             type="submit"
             fullWidth
             variant="contained"
@@ -215,7 +203,7 @@ export default function Register() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}></Box>
+      </Paper>
     </Container>
   );
 }
