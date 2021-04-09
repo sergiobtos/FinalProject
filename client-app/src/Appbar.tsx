@@ -25,10 +25,10 @@ export default function ButtonAppBar() {
   const appContext: any = React.useContext(AppContext);
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "darkOrange" }}>
+      <AppBar position="static" style={{ backgroundColor: "Green" }}>
         <Toolbar>
           <Typography variant="h6" className={classes.title} style={{ color: "black", fontFamily: "georgia", fontWeight: "bold" }}>
-            Health Care Application
+            Comp 308 Final Project
           </Typography>
           {appContext.isSignedin ? (
             <Button

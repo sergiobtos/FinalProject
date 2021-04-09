@@ -9,9 +9,9 @@ const client = new MongoClient(uri, {
 
 client.connect((err) => {
   if (err) {
-    console.log("unable to connect to db");
+    console.log("Error in the connection");
   } else {
-    console.log("connected to db");
+    console.log("Successfull connected to DB");
   }
 });
 
