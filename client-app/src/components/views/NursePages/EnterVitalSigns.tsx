@@ -156,10 +156,6 @@ export default function EnterVitalSigns() {
             </Grid>
 
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Respiratory Rate:</InputLabel>
-              <br>
-
-              </br>
               <TextField
                 variant="outlined"
                 required

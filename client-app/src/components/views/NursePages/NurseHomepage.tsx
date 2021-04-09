@@ -34,7 +34,7 @@ function TabPanel(props: TabPanelProps) {
 export default function NurseHomepage() {
   const [value, setValue] = React.useState(0);
   const appContext: any = React.useContext(AppContext);
-  const [altets, setAlerts] = React.useState(
+  const [alerts, setAlerts] = React.useState(
     [{ _id: "", patientId: "", patientUserName: "", status: true, time: Date.now() }]
   );
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function NurseHomepage() {
 
   //retrive alert 
   const retrieveAlerts = () => {
-    const res = fetch("http://localhost:8500/getAllActiveEAlert", {
+    const res = fetch("http://localhost:5000/getAllActiveEAlert", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export default function NurseHomepage() {
 
 
   var handleAlert = (alertId: string) => {
-    const res = fetch("http://localhost:8500/answerAlert", {
+    const res = fetch("http://localhost:5000/answerAlert", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -106,13 +106,13 @@ export default function NurseHomepage() {
       <TabPanel value={value} index={0}>
         <div>
           {
-            altets.map(
+            alerts.map(
               (alert) => (
                 <Alert key={alert._id} severity="error">
                   <AlertTitle>Emergency Alert</AlertTitle>
               This Emergency alert from {alert.patientUserName} — check it out!
               <Button variant="contained" color="secondary" onClick={() => handleAlert(alert._id)} 
-                    style={{ fontFamily: "georgia", backgroundColor: "darkOrange", fontWeight: "bold" }}> 
+                    style={{ fontFamily: "georgia", backgroundColor: "green", fontWeight: "bold" }}> 
                   Answer Alert</Button>
                 </Alert>
               ))
@@ -123,13 +123,13 @@ export default function NurseHomepage() {
       <TabPanel value={value} index={1}>
         <div>
           {
-            altets.map(
+            alerts.map(
               (alert) => (
                 <Alert key={alert._id} severity="error">
                   <AlertTitle>Emergency Alert</AlertTitle>
               This Emergency alert from {alert.patientUserName} — check it out!
                   <Button variant="contained" color="secondary" onClick={() => handleAlert(alert._id)} 
-                    style={{ fontFamily: "georgia", backgroundColor: "darkOrange", fontWeight: "bold" }}> 
+                    style={{ fontFamily: "georgia", backgroundColor: "green", fontWeight: "bold" }}> 
                   Answer Alert</Button>
                 </Alert>
               ))
@@ -140,13 +140,13 @@ export default function NurseHomepage() {
       <TabPanel value={value} index={2}>
         <div>
           {
-            altets.map(
+            alerts.map(
               (alert) => (
                 <Alert key={alert._id} severity="error">
                   <AlertTitle>Emergency Alert</AlertTitle>
               This Emergency alert from {alert.patientUserName} — check it out!
               <Button variant="contained" color="secondary" onClick={() => handleAlert(alert._id)} 
-                    style={{ fontFamily: "georgia", backgroundColor: "darkOrange", fontWeight: "bold" }}> 
+                    style={{ fontFamily: "georgia", backgroundColor: "green", fontWeight: "bold" }}> 
                   Answer Alert</Button>
                 </Alert>
               ))

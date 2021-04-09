@@ -44,7 +44,7 @@ export default function EnterMotiTips() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const res = fetch("http://localhost:8500/enterMotiTips", {
+    const res = fetch("http://localhost:5000/enterMotiTips", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -88,7 +88,7 @@ export default function EnterMotiTips() {
               />
             </Grid>
           </Grid>
-          <Button style={{color:'black',fontFamily:'georgia',backgroundColor:'darkOrange',fontWeight:'bold'}}
+          <Button style={{color:'black',fontFamily:'georgia',backgroundColor:'green',fontWeight:'bold'}}
             type="submit"
             fullWidth
             variant="contained"

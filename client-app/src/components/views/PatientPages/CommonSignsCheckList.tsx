@@ -52,7 +52,7 @@ export default function CommonSignsCheckList() {
     });
 
     e.preventDefault();
-    const res = fetch("http://localhost:8500/sendSymptomList", {
+    const res = fetch("http://localhost:5000/sendSymptomList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -94,7 +94,7 @@ export default function CommonSignsCheckList() {
       </FormGroup>
 
       <Button variant="contained" color="secondary" onClick={handleChecklist}
-        style={{ color: "black", fontFamily: "georgia", backgroundColor: "darkOrange", fontWeight: "bold", marginLeft: "700px", marginTop: "15px" }} >
+        style={{ color: "black", fontFamily: "georgia", backgroundColor: "green", fontWeight: "bold", marginLeft: "700px", marginTop: "15px" }} >
         Submit
       </Button>
 

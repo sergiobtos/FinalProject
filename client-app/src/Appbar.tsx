@@ -5,6 +5,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
 import AppContext from "./context/AppContext";
+import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,8 +27,11 @@ export default function ButtonAppBar() {
   const appContext: any = React.useContext(AppContext);
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: "Green" }}>
+      <AppBar position="sticky" style={{ backgroundColor: "Green" }}>
         <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <MenuIcon />
+          </IconButton>
           <Typography variant="h6" className={classes.title} style={{ color: "black", fontFamily: "georgia", fontWeight: "bold" }}>
             Comp 308 Final Project
           </Typography>

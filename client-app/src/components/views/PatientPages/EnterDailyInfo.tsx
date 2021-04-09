@@ -54,7 +54,7 @@ export default function EnterDailyInfo() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(vitalSigns)
-    const res = fetch("http://localhost:8500/saveVitalSigns", {
+    const res = fetch("http://localhost:5000/saveVitalSigns", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -78,11 +78,12 @@ export default function EnterDailyInfo() {
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
           <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Blood Temperature:</InputLabel>
               <br>
 
               </br>
               <TextField
+               autoComplete="off"
+               label="Blood Temperature"
                 variant="outlined"
                 required
                 fullWidth
@@ -98,12 +99,13 @@ export default function EnterDailyInfo() {
               />
             </Grid>
 
-            <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Heart Rate:</InputLabel>
+            <Grid item xs={12}>            
               <br>
 
               </br>
               <TextField
+                autoComplete="off"
+                label="Heart Rate"
                 variant="outlined"
                 required
                 fullWidth
@@ -120,11 +122,12 @@ export default function EnterDailyInfo() {
             </Grid>
 
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Blood Pressure:</InputLabel>
               <br>
 
               </br>
               <TextField
+                autoComplete="off"
+                label="Blood Pressure"
                 variant="outlined"
                 required
                 fullWidth
@@ -141,11 +144,12 @@ export default function EnterDailyInfo() {
             </Grid>
 
             <Grid item xs={12}>
-              <InputLabel required style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }}>Respiratory Rate:</InputLabel>
               <br>
 
               </br>
               <TextField
+               autoComplete="off"
+               label="Respiratory Rate"
                 variant="outlined"
                 required
                 fullWidth
@@ -162,7 +166,7 @@ export default function EnterDailyInfo() {
             </Grid>
           </Grid>
           <Button
-            style={{ color: "black", fontFamily: "georgia", backgroundColor: "darkOrange", fontWeight: "bold" }}
+            style={{ color: "black", fontFamily: "georgia", backgroundColor: "green", fontWeight: "bold" }}
             type="submit"
             fullWidth
             variant="contained"

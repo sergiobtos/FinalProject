@@ -20,7 +20,7 @@ export default function SendEmergencyAlert() {
   const requestData = { patientId: appContext.getUserData._id, patientUserName: appContext.getUserData.userName, time: Date.now(), status: true, responderId: null };
   const handleAlert = (e: any) => {
     e.preventDefault();
-    const res = fetch("http://localhost:8500/sendEmergencyAlert", {
+    const res = fetch("http://localhost:5000/sendEmergencyAlert", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -40,7 +40,7 @@ export default function SendEmergencyAlert() {
 
   return (
     <Button className={stypeClass.button} variant="contained" color="secondary" onClick={handleAlert}
-      style={{ color: "black", fontFamily: "georgia", backgroundColor: "darkOrange", fontWeight: "bold", marginLeft: "650px" }} >
+      style={{ color: "black", fontFamily: "georgia", backgroundColor: "green", fontWeight: "bold", marginLeft: "650px" }} >
         Send Emergency Alert
     </Button>
   );

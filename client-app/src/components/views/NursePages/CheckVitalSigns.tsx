@@ -29,7 +29,7 @@ export default function CheckVitalSigns() {
   }, []);
 
   const retrieveVitalSigns = () => {
-    const res = fetch("http://localhost:8500/retrieveVitalSigns", {
+    const res = fetch("http://localhost:5000/retrieveVitalSigns", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
