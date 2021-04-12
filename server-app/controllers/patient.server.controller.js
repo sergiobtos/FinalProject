@@ -2,7 +2,7 @@ var client = require("../config/mongodbConnection");
 var ml = require('machine_learning');
 
 
-exports.retrieveMotivationalTipsRender = (req, res) => {
+exports.getMotivationalTipsRender = (req, res) => {
     console.log("I am here")
     const motivationalTipsCollection = client.db("FinalProject").collection("motivationalTips");
     //natural order: The order in which the database refers to documents on disk.
@@ -98,7 +98,6 @@ exports.commonSignsChecklist = (req, res) => {
     dt.build();
     let classificationResult = dt.classify(answer);
     let tree = dt.getTree();
-      console.log(tree);
     dt.prune(1.0); // 1.0 : mingain.
   
   

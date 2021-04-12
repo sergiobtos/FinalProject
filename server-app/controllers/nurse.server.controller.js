@@ -90,7 +90,7 @@ exports.getAllEmergencyAlert =(req, res) =>{
       );
 };
 
-exports.answerAlert=(req, res) =>{
+exports.replyAlert=(req, res) =>{
   const alertsCollection = client.db("FinalProject").collection("emergencyAlerts");
   let alertId = req.body.id;
   let nurseId = req.body.nurseId;
@@ -102,8 +102,6 @@ exports.answerAlert=(req, res) =>{
       alertsCollection.find({_id: ObjectId(alertId)}).toArray()
       .then(
         (data) =>{
-          console.log(data)
-          console.log("PatientUserName", data.patientUserName);
           res.json({
             msg: 1,
             patientUsername: data

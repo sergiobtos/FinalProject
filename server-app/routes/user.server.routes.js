@@ -6,5 +6,5 @@ module.exports = function(app){
 
     app.post("/signin", user.signinRender);
 
-    app.get('/getAllPatients', user.findAllPatients);
+    //app.get('/getAllPatients', user.findAllPatients);
 };

@@ -43,7 +43,7 @@ export default function NurseHomepage() {
 
   //retrive alert 
   const retrieveAlerts = () => {
-    const res = fetch("http://localhost:5000/getAllActiveEAlert", {
+    const res = fetch("http://localhost:5000/getAllActiveEmergencyAlert", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export default function NurseHomepage() {
 
 
   var handleAlert = (alertId: string) => {
-    const res = fetch("http://localhost:5000/answerAlert", {
+    const res = fetch("http://localhost:5000/replyAlert", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -44,7 +44,7 @@ export default function EnterMotiTips() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const res = fetch("http://localhost:5000/enterMotivationalTips", {
+    const res = fetch("http://localhost:5000/addMotivationalTips", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

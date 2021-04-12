@@ -31,7 +31,7 @@ export default function ReadMotiTips() {
   }, []);
 
   const retrieveMotiTips = () => {
-    const res = fetch("http://localhost:5000/retrieveMotiTips", {
+    const res = fetch("http://localhost:5000/getMotivationalTips", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"

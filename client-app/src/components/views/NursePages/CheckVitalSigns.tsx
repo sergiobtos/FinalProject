@@ -28,7 +28,7 @@ export default function CheckVitalSigns() {
   }, []);
 
   const retrieveVitalSigns = () => {
-    const res = fetch("http://localhost:5000/retrieveVitalSigns")
+    const res = fetch("http://localhost:5000/getVitalSigns")
       .then((data) => data.json())
       .then((data: any) => {
         console.log(data);

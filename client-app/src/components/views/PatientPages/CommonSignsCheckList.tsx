@@ -52,7 +52,7 @@ export default function CommonSignsCheckList() {
     });
 
     e.preventDefault();
-    const res = fetch("http://localhost:5000/sendSymptomList", {
+    const res = fetch("http://localhost:5000/sendSymptomCheckList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

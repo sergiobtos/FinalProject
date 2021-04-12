@@ -54,7 +54,7 @@ export default function EnterDailyInfo() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(vitalSigns)
-    const res = fetch("http://localhost:5000/saveVitalSigns", {
+    const res = fetch("http://localhost:5000/createVitalSigns", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

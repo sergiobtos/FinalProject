@@ -14,7 +14,7 @@ client.connect((err) => {
     console.log("Error in the connection");
   } else {
     const db = client.db(dbName);
-    console.log("New one Successfull connected to DB");
+    console.log("Successfull connected to DB");
   }
 });
 
