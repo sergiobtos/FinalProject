@@ -1,24 +1,7 @@
-var client = require("../dbConnection/mongodbConnection");
+var client = require("../config/mongodbConnection");
 var ObjectId = require('mongodb').ObjectID;
 
-exports.sendEAlert = (req, res) => {
-  const requestData= req.body;
-  const alertCollection = client.db("FinalProject").collection("EAlerts");
-    // console.log(requestData);
 
-  alertCollection.insertOne(requestData).then(
-    data => {
-      res.json({
-        msg: "Send Alert successful." 
-      });
-    },
-    err => {
-      res.json({
-        msg: "unable to insert alert to database."
-      });
-    }
-  );
-};
 
 exports.getAllActiveEAlert =(req, res) =>{
 

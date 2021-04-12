@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CheckVitalSigns() {
   const classes = useStyles();
-  const appContext: any = React.useContext(AppContext);
   const [vitalSigns, setVitalSigns] = React.useState({
     vitalSignsarray: [],
   });

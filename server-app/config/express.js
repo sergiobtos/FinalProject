@@ -38,6 +38,7 @@ module.exports = function (){
 
     require('../routes/user.server.routes')(app);
     require('../routes/nurse.server.routes')(app);
+    require('../routes/patient.server.routes')(app);
 
     return app;
 };

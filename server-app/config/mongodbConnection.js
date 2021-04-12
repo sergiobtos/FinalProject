@@ -1,4 +1,5 @@
-const MongoClient = require("mongodb").MongoClient;
+//create the client class
+const {MongoClient} = require("mongodb")
 const url =  "mongodb://localhost:27017/";
 
 const client = new MongoClient(url, {
@@ -13,7 +14,7 @@ client.connect((err) => {
     console.log("Error in the connection");
   } else {
     const db = client.db(dbName);
-    console.log("Successfull connected to DB");
+    console.log("New one Successfull connected to DB");
   }
 });
 

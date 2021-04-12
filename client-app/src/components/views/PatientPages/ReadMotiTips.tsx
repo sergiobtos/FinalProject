@@ -53,7 +53,7 @@ export default function ReadMotiTips() {
     <Card className={classes.root}>
       <CardContent>
         <Typography className={classes.title} variant="h5" component="h1" style={{fontFamily: "georgia", fontWeight: "bold" }}>
-          Stay at home, stay safe :)
+          Motivational Tips for you
         </Typography>
         <Typography variant="body2" component="p">
           {motivationalTips.tips}
