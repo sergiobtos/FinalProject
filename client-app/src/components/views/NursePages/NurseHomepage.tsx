@@ -76,9 +76,8 @@ export default function NurseHomepage() {
     res
       .then(data => data.json())
       .then((data: any) => {
-        console.log(data);
         if (data.msg === 1) {
-          alert(`Check ${data.patientUsername} Now !`);
+          alert(`Check ${data.patientUsername[0].patientUserName.toUpperCase()} Now !`);
           retrieveAlerts();
         } else {
           alert(data.msg);

@@ -99,14 +99,14 @@ exports.answerAlert=(req, res) =>{
   alertsCollection.updateOne(query,data,(err , collection) => {
     if(err) {throw err;}
     else{
-      console.log("line 102: ",alertId)
-      alertsCollection.find({_id: alertId,}).toArray()
+      alertsCollection.find({_id: ObjectId(alertId)}).toArray()
       .then(
         (data) =>{
-          console.log("Line 107: ", data);
+          console.log(data)
+          console.log("PatientUserName", data.patientUserName);
           res.json({
             msg: 1,
-            patientUsername : data.patientUserName
+            patientUsername: data
           })
         },
         (err) => {
