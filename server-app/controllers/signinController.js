@@ -1,10 +1,10 @@
-var client = require("../repo/mongodbConnection");
+var client = require("../dbConnection/mongodbConnection");
 
 exports.signinRender = (req, res) => {
   const loginData = req.body;
   console.log(loginData);
   // get userCollection
-  const userCollection = client.db("comp308Project").collection("users");
+  const userCollection = client.db("FinalProject").collection("users");
   // check if the email and password are right
   userCollection
     .findOne({

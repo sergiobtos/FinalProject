@@ -1,4 +1,4 @@
-var client = require("../repo/mongodbConnection");
+var client = require("../dbConnection/mongodbConnection");
 var ObjectId = require('mongodb').ObjectID;
 var ml = require('machine_learning');
 
@@ -74,16 +74,16 @@ exports.sendSymptomList = (req, res) => {
 
   if (medicalAttention === "Yes") {
     res.json({
-      msg: "You have some serious issues, go to hopspital."
+      msg: "Emergency situation, must go to hospital."
     });
   }
   if (medicalAttention === "No") {
     res.json({
-      msg: "Nothing to worry about, just stay at home."
+      msg: "Nothing too important, just take a rest and relax."
     });
   } else {
     res.json({
-      msg: "Something Went Wrong."
+      msg: "Error."
     });
   }
 

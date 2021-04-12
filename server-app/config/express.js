@@ -36,6 +36,9 @@ module.exports = function (){
     };
     app.use(cors(corsOptions));
 
+    require('../routes/user.server.routes')(app);
+    require('../routes/nurse.server.routes')(app);
+
     return app;
 };
     

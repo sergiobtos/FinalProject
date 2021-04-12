@@ -1,8 +1,8 @@
-var client = require("../repo/mongodbConnection");
+var client = require("../dbConnection/mongodbConnection");
 
 exports.retrieveVitalSignsRender = (req, res) => {
   const vitalSignsCollection = client
-    .db("comp308Project")
+    .db("FinalProject")
     .collection("vitalSigns");
   // check if the email and password are right
   vitalSignsCollection

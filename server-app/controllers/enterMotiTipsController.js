@@ -1,9 +1,9 @@
-var client = require("../repo/mongodbConnection");
+var client = require("../dbConnection/mongodbConnection");
 
 exports.enterMotiTipsRender = (req, res) => {
   const motiTips = req.body;
   // get userCollection
-  const motiTipsCollection = client.db("comp308Project").collection("motiTips");
+  const motiTipsCollection = client.db("FinalProject").collection("motiTips");
 
   // insert data to database
   motiTipsCollection.insertOne(motiTips).then(

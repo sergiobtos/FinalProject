@@ -1,9 +1,9 @@
-var client = require("../repo/mongodbConnection");
+var client = require("../dbConnection/mongodbConnection");
 var ObjectId = require('mongodb').ObjectID;
 
 exports.sendEAlert = (req, res) => {
   const requestData= req.body;
-  const alertCollection = client.db("comp308Project").collection("EAlerts");
+  const alertCollection = client.db("FinalProject").collection("EAlerts");
     // console.log(requestData);
 
   alertCollection.insertOne(requestData).then(
@@ -22,7 +22,7 @@ exports.sendEAlert = (req, res) => {
 
 exports.getAllActiveEAlert =(req, res) =>{
 
-    const alertsCollection = client.db("comp308Project").collection("EAlerts");
+    const alertsCollection = client.db("FinalProject").collection("EAlerts");
     alertsCollection
       .find({
         status:true,
@@ -52,7 +52,7 @@ exports.answerAlert=(req, res) =>{
   let nurseId = req.body.nurseId;
   var query = { _id : ObjectId(alertId) };
   var data = { $set:{status:false,responderId:nurseId} };
-  client.db("comp308Project").collection("EAlerts")
+  client.db("FinalProject").collection("EAlerts")
   .updateOne(query,data,(err , collection) => {
     if(err) throw err;
     else
