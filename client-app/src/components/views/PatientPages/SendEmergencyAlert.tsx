@@ -62,17 +62,15 @@ export default function SendEmergencyAlert() {
     dataReceived : []
   })
 
-  
   const handleAlert = async (e: any) =>{
     e.preventDefault();
     e.target.reset();
     const res = await requestPost("http://localhost:5000/sendEmergencyAlert",emergencyAlert);
     const jsonResult = await res.json();
-    setTimeout(()=> setResponse({
-      inserted : 3,
-      message : "",
-      dataReceived : []
-    }), 2000);
+    setTimeout(function(){
+      setResponse({...response, inserted : 3});
+      setEmergencyAlert({...emergencyAlert, message : ""});
+    }, 1500);
     if(jsonResult.inserted === 0){
       //inserted { 0 = inserted with success, 1 = error , 3 = button submit wasn't clicked yet}
       setResponse({

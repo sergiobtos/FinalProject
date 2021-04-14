@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState} from "react";
 import { requestGet} from "../../../utils/request";
 import { makeStyles } from "@material-ui/core/styles";
 import AppContext from "../../../context/AppContext";
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CheckVitalSigns() {
   const classes = useStyles();
-  const [vitalSigns, setVitalSigns] = React.useState({
+  const [vitalSigns, setVitalSigns] = useState({
     vitalSignsarray: [],
   });
 

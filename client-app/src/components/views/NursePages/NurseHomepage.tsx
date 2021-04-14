@@ -4,7 +4,7 @@ import Tab from "@material-ui/core/Tab";
 import { Typography, Box, Button } from "@material-ui/core";
 import EnterVitalSigns from "./EnterVitalSigns";
 import CheckVitalSigns from "./CheckVitalSigns";
-import EnterMotiTips from "./EnterMotiTips";
+import EnterMotivationalTips from "./EnterMotivationalTips";
 import AppContext from "../../../context/AppContext";
 import AlertsPage from "../NursePages/Alerts";
 import { requestGet} from "../../../utils/request";
@@ -79,7 +79,7 @@ export default function NurseHomepage() {
         <CheckVitalSigns />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <EnterMotiTips />
+        <EnterMotivationalTips />
       </TabPanel>
       <TabPanel value={value} index={3}>
           <AlertsPage />

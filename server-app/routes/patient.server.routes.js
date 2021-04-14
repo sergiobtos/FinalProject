@@ -6,6 +6,4 @@ module.exports = function(app){
     app.get("/getMotivationalTips",auth, patient.getMotivationalTipsRender);
     
     app.post('/sendEmergencyAlert',auth, patient.sendEmergencyAlert);
-
-    app.post('/sendSymptomCheckList', auth, patient.commonSignsChecklist);
 };

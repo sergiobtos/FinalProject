@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(0),
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
 
   },
@@ -39,10 +39,10 @@ export default function EnterVitalSigns() {
   const [vitalSigns, setVitalSigns] = useState({
     userId: appContext.getUserData._id,
     userName: "",
-    bodyTemperature: "",
-    heartRate: "",
-    bloodPressure: "",
-    respiratoryRate: ""
+    bodyTemperature: null,
+    heartRate: null,
+    bloodPressure: null,
+    respiratoryRate: null
   });
 
   const handleSubmit = async (e: any) => {
@@ -50,6 +50,9 @@ export default function EnterVitalSigns() {
     const res = await requestPost("http://localhost:5000/createVitalSigns", vitalSigns);
     const jsonResult = await res.json();
     setResult({msg: jsonResult.msg });
+    setTimeout(()=> setResult({
+      msg : ""
+    }), 2000);
   };
 
 
@@ -86,6 +89,7 @@ export default function EnterVitalSigns() {
             <Grid item xs={12}>            
               <br></br>
               <TextField
+                type = "number"
                 variant="outlined"
                 required
                 fullWidth
@@ -106,6 +110,7 @@ export default function EnterVitalSigns() {
             <Grid item xs={12}>              
               <br></br>
               <TextField
+                type = "number"
                 variant="outlined"
                 required
                 fullWidth
@@ -125,6 +130,7 @@ export default function EnterVitalSigns() {
             <Grid item xs={12}>          
             <br></br>
               <TextField
+                type = "number"
                 variant="outlined"
                 required
                 fullWidth
@@ -140,9 +146,10 @@ export default function EnterVitalSigns() {
                 }}
               />
             </Grid>
-
+<br/>
             <Grid item xs={12}>
               <TextField
+                type = "number"
                 variant="outlined"
                 required
                 fullWidth

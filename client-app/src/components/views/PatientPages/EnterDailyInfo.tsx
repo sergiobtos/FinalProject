@@ -48,10 +48,10 @@ export default function EnterDailyInfo() {
   const [vitalSigns, setVitalSigns] = React.useState({
     userId: appContext.getUserData._id,
     userName: appContext.getUserData.userName,
-    bodyTemperature: "",
-    heartRate: "",
-    bloodPressure: "",
-    respiratoryRate: ""
+    bodyTemperature: null,
+    heartRate: null,
+    bloodPressure: null,
+    respiratoryRate: null
   });
 
   const handleSubmit = async (e: any) => {
@@ -60,6 +60,9 @@ export default function EnterDailyInfo() {
     const res = await requestPost("http://localhost:5000/createVitalSigns", vitalSigns);
     const jsonResult = await res.json();
         setResult({msg: jsonResult.msg });
+        setTimeout(()=> setResult({
+          msg : ""
+        }), 2000);
   };
 
   return (
@@ -75,7 +78,8 @@ export default function EnterDailyInfo() {
           <Grid container spacing={1}>
           <Grid item xs={12}>
           <br></br>
-              <TextField
+              <TextField 
+              type = "number"
                autoComplete="off"
                label="Blood Temperature"
                 variant="outlined"
@@ -98,6 +102,7 @@ export default function EnterDailyInfo() {
 
               </br>
               <TextField
+                type = "number"
                 autoComplete="off"
                 label="Heart Rate"
                 variant="outlined"
@@ -120,6 +125,7 @@ export default function EnterDailyInfo() {
 
               </br>
               <TextField
+                type = "number"
                 autoComplete="off"
                 label="Blood Pressure"
                 variant="outlined"
@@ -142,6 +148,7 @@ export default function EnterDailyInfo() {
 
               </br>
               <TextField
+               type = "number"
                autoComplete="off"
                label="Respiratory Rate"
                 variant="outlined"

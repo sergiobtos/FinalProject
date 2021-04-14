@@ -2,8 +2,7 @@ import React from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Typography, Box } from "@material-ui/core";
-import ReadMotiTips from "./ReadMotiTips";
-import CommonSignsCheckList from "./CommonSignsCheckList";
+import ReadMotivationalTips from "./ReadMotivationalTips";
 import SendEmergencyAlert from "./SendEmergencyAlert";
 import EnterDailyInfo from "./EnterDailyInfo";
 
@@ -53,16 +52,13 @@ export default function PatientHomepage() {
         <Tab style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }} label="Common Signs Checklist" />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <ReadMotiTips />
+        <ReadMotivationalTips />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <SendEmergencyAlert />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <EnterDailyInfo />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <CommonSignsCheckList />
       </TabPanel>
     </div>
   );

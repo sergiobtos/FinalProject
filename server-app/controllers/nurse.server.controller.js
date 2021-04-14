@@ -3,6 +3,11 @@ var ObjectId = require('mongodb').ObjectID;
 
 exports.addVitalSignsRender = (req, res) => {
     const VitalSigns = req.body;
+    VitalSigns.bodyTemperature = parseInt(req.body.bodyTemperature);
+    VitalSigns.heartRate = parseInt(req.body.heartRate);
+    VitalSigns.bloodPressure = parseInt(req.body.bloodPressure);
+    VitalSigns.respiratoryRate = parseInt(req.body.respiratoryRate);
+
     // get userCollection
     const VitalSignsCollection = client.db("FinalProject").collection("vitalSigns");
     // insert data to database
@@ -73,7 +78,6 @@ exports.getAllEmergencyAlert =(req, res) =>{
       .toArray()
       .then(
         (data) => {
-          console.log("Line 76 ", data)
           if (!data.length) {
             res.json({
               msg: false,
