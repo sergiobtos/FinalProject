@@ -39,7 +39,7 @@ exports.signupRender = async (req, res) => {
   );
 };
 
-exports.signinRender = async (req, res) => {
+exports.signinRender =  (req, res) => {
   const loginData = req.body;
   // get userCollection
   const userCollection = client.db("FinalProject").collection("users");
@@ -49,21 +49,32 @@ exports.signinRender = async (req, res) => {
       userName: loginData.userName
     })
     .then(
-      data => {
+      async data => {
         if (!data) {
           res.json({
-            msg: "Username doesn't exist, please try again."
+            error: true,
+            errormsg: "Username doesn't exist, please try again."
           });
         } else {
-          //const isPasswordCorrect = await bcrypt.compare(loginData.password, data.password);
-          //console.log("Console ispasswordcorrect: ",isPasswordCorrect);
-          res.json({
-            ...data,
-            msg: 1
-          });
+          const isPasswordCorrect = await bcrypt.compare(loginData.password, data.password);
+          console.log("Console ispasswordcorrect: ",isPasswordCorrect);
+          if(!isPasswordCorrect){
+            res.status(400).json({
+              error: true, errormsg: "Password incorrect"
+            })
+            console.log("Console ispasswordcorrect: ",isPasswordCorrect);
+          }else{
+            const token =  jwt.sign({username: data.userName, id: data._id}, secret, {expiresIn: "86400"});
+            res.status(200).json({
+              ...data,
+              error: false,
+              token
+            });
+          }   
         }
       },
       err => {
+        res.status(500).json({errormsg: "Something went wrong", error: true});
         console.log("err" + err);
       }
     );

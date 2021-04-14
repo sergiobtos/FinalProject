@@ -3,19 +3,21 @@ var ml = require('machine_learning');
 
 
 exports.getMotivationalTipsRender = (req, res) => {
-    console.log("I am here")
     const motivationalTipsCollection = client.db("FinalProject").collection("motivationalTips");
     //natural order: The order in which the database refers to documents on disk.
     motivationalTipsCollection.findOne({}, { sort: { $natural: -1 } }).then(
       data => {
-        if (!data) {
+        if (data === null) {
+          
           res.json({
-            msg: "No tips."
+            result: 0,
+            msg: "No Motivational Tips for now, maybe tomorow."
           });
         } else {
           res.json({
-            ...data,
-            msg: 1
+            data: data,
+            msg: "Here are the Motivational Tips for you today",
+            result: 1
           });
         }
       },
@@ -27,19 +29,32 @@ exports.getMotivationalTipsRender = (req, res) => {
 
 exports.sendEmergencyAlert = (req, res) => {
     const data= req.body;
-    const alertCollection = client.db("FinalProject").collection("emergencyAlerts");  
-    alertCollection.insertOne(data).then(
-      data => {
-        res.json({
-          msg: "Your Emergency was sent." 
-        });
-      },
-      err => {
-        res.json({
-          msg: "Error"
-        });
-      }
-    );
+    const alertCollection = client.db("FinalProject").collection("emergencyAlerts");
+    if(data.message.length === 0){
+      res.json({
+        msg: "The form can not be empty",
+        inserted : 1
+      })
+    }else{
+
+      alertCollection.insertOne(data).then(
+        data => {
+          //inserted { 0 = inserted with success, 1 = error , 3 = button submit wasn't clicked yet}
+          res.json({
+            msg: "Alert sent! Your nurse will get notification",
+            inserted : 0, 
+            emergencyAlert : data
+          });
+        },
+        err => {
+          //inserted { 0 = inserted with success, 1 = error , 3 = button submit wasn't clicked yet}
+          res.json({
+            msg: "Error when tried to send your emergency alert, try later",
+            inserted : 1
+          });
+        }
+      );
+    }
   };
 
 exports.commonSignsChecklist = (req, res) => {

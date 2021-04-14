@@ -9,7 +9,7 @@ exports.addVitalSignsRender = (req, res) => {
     VitalSignsCollection.insertOne(VitalSigns).then(
       data => {
         res.json({
-          msg: "Send Vital Signs successful." // succeed
+          msg: "Vital Signs was added successfully." 
         });
       },
       err => {
@@ -73,14 +73,15 @@ exports.getAllEmergencyAlert =(req, res) =>{
       .toArray()
       .then(
         (data) => {
-          if (!data) {
+          console.log("Line 76 ", data)
+          if (!data.length) {
             res.json({
-              msg: "No Alerts for now",
+              msg: false,
             });
           } else {
             res.json({
               dataArr: data,
-              msg: 1,
+              msg: true,
             });
           }
         },

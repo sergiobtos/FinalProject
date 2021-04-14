@@ -7,6 +7,7 @@ import NurseHomepage from "./components/views/NursePages/NurseHomepage";
 import PatientHomepage from "./components/views/PatientPages/PatientHomepage";
 
 export default function App() {
+  const [alerts, setAlerts] = React.useState([]);
   const [isSigninPage, setSigninPage] = React.useState(true);
   const [isSigned, setSignedin] = React.useState(false);
   const [userData, setUserData] = React.useState({
@@ -30,6 +31,7 @@ export default function App() {
   const handleLogout = () => {
     setSignedin(false);
     handleGoToLogin();
+    localStorage.removeItem("token");
   };
 
   const handleTransUserData = (data: any) => {
@@ -43,6 +45,10 @@ export default function App() {
     });
   };
 
+  const handleAlertsReceived = (data : any)=> {
+    setAlerts(data);
+  }
+
   const value = {
     isSigninPageOpened: isSigninPage,
     getUserData: userData,
@@ -51,7 +57,9 @@ export default function App() {
     handleGoToLoginPage: handleGoToLogin,
     handleGetUserData: handleTransUserData,
     handleSignedIn: handleSigned,
-    handleLogoutToLoginPage: handleLogout
+    handleLogoutToLoginPage: handleLogout,
+    handleAlerts : handleAlertsReceived,
+    listAlerts : alerts
   };
 
   return (

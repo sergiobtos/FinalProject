@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { requestPost} from "../../../utils/request";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -42,20 +43,11 @@ export default function EnterMotiTips() {
     sendTime: Date.now()
   });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const res = fetch("http://localhost:5000/addMotivationalTips", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(motivationalTips)
-    });
-    res
-      .then(data => data.json())
-      .then((data: any) => {
-        alert(data.msg);
-      });
+    const res = await requestPost("http://localhost:5000/addMotivationalTips", motivationalTips);
+    const jsonResult = await res.json();
+        alert(jsonResult.msg);
   };
 
   return (
@@ -99,7 +91,6 @@ export default function EnterMotiTips() {
           </Button>
         </form>
       </div>
-      <Box mt={5}></Box>
     </Container>
   );
 }

@@ -23,16 +23,30 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  body: {
+    position: "fixed",
+    width: "100%",
+    height: "100%",
+    backgroundImage: 'linear-gradient(#2a3342, #3e5c90)',
+    padding: "80px",
+    backgroundColor: "#038989",
+    color: "white",
+    textAlign: "center",
   }
 }));
 
+
+
 export default function SignIn() {
   const classes = useStyles();
-  // need to use the global value
+
   const appContext: any = React.useContext(AppContext);
   const [loginData, setLoginData] = React.useState({
     userName: "",
-    password: ""
+    password: "",
+    error: false,
+    errormsg: ""
   });
 
   const handleSubmit = (e: any) => {
@@ -47,19 +61,26 @@ export default function SignIn() {
     res
       .then(data => data.json())
       .then((data: any) => {
-        if (data.msg === 1) {
+        if (!data.error) {
+          localStorage.setItem("token", data.token);
           appContext.handleGetUserData(data);
           appContext.handleSignedIn();
         } else {
-          alert(data.msg);
+          localStorage.removeItem("token");
+          setLoginData({
+            ...loginData,
+            error: true,
+            errormsg: data.errormsg
+          })
         }
       });
   };
 
   return (
-    <Container component="main" maxWidth="xs" >
-      <Paper className={classes.paper}  elevation={3}>
+    <Container component="main" >
+      <Paper className={classes.paper}  elevation={3} >
       <CssBaseline />
+      {loginData.error && (<div className="alert alert-danger" role="alert">{loginData.errormsg}</div>)}
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" style={{ fontWeight: "bold", fontFamily: "georgia" }}>
           Sign In

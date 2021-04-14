@@ -1,30 +1,28 @@
-import React from "react";
+import React, {useState, useContext}  from "react";
+import { requestPost} from "../../../utils/request";
 import {
+  Paper,
   Container,
   CssBaseline,
   Button,
   TextField,
   Grid,
-  Box,
   Typography,
   makeStyles
 } from "@material-ui/core";
 import AppContext from "../../../context/AppContext";
-import { InputLabel, MenuItem } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
-  },
-  avatar: {
-    margin: theme.spacing(2),
-    backgroundColor: theme.palette.secondary.main
+    alignItems: "center",
+    padding: theme.spacing(2),
+    marginBottom: theme.spacing(0),
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%", 
     marginTop: theme.spacing(1)
   },
   submit: {
@@ -41,7 +39,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnterDailyInfo() {
   const classes = useStyles();
-  const appContext: any = React.useContext(AppContext);
+  const appContext: any = useContext(AppContext);
+
+  const [result, setResult] = useState({
+    msg : ""
+  });
+
   const [vitalSigns, setVitalSigns] = React.useState({
     userId: appContext.getUserData._id,
     userName: appContext.getUserData.userName,
@@ -51,36 +54,27 @@ export default function EnterDailyInfo() {
     respiratoryRate: ""
   });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(vitalSigns)
-    const res = fetch("http://localhost:5000/createVitalSigns", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(vitalSigns)
-    });
-    res
-      .then(data => data.json())
-      .then((data: any) => {
-        alert(data.msg);
-      });
+
+    const res = await requestPost("http://localhost:5000/createVitalSigns", vitalSigns);
+    const jsonResult = await res.json();
+        setResult({msg: jsonResult.msg });
   };
 
   return (
     <Container component="main" maxWidth="xs">
+      <Paper className={classes.paper}  elevation={3} >
       <CssBaseline />
+      {result.msg && (<div className="alert alert-success" role="alert">{result.msg}</div>)}
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5" className={classes.typography} style={{ fontFamily: "georgia", fontWeight: "bold" }}>
+        <Typography component="h1" variant="h5" className={classes.typography} style={{ fontFamily: "georgia", fontWeight: "bold", color: 'black' }}>
           Enter Daily Info
         </Typography>
-        <form className={classes.form} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+        <form className={classes.form} onSubmit={handleSubmit} autoComplete="off" noValidate>
+          <Grid container spacing={1}>
           <Grid item xs={12}>
-              <br>
-
-              </br>
+          <br></br>
               <TextField
                autoComplete="off"
                label="Blood Temperature"
@@ -177,7 +171,7 @@ export default function EnterDailyInfo() {
           </Button>
         </form>
       </div>
-      <Box mt={5}></Box>
+      </Paper>
     </Container>
   );
 }

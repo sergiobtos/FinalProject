@@ -27,13 +27,13 @@ export default function ButtonAppBar() {
   const appContext: any = React.useContext(AppContext);
   return (
     <div className={classes.root}>
-      <AppBar position="sticky" style={{ backgroundColor: "Green" }}>
+      <AppBar position="sticky" style={{ backgroundColor: "linear-gradient(#22687F, #5A8391, #22687F)" }}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title} style={{ color: "black", fontFamily: "georgia", fontWeight: "bold" }}>
-            Comp 308 Final Project
+            
           </Typography>
           {appContext.isSignedin ? (
             <Button

@@ -1,4 +1,5 @@
 import React from "react";
+import { requestPost} from "../../../utils/request";
 import {
   makeStyles,
   Theme,
@@ -42,34 +43,23 @@ export default function CommonSignsCheckList() {
   };
 
 
-  const handleChecklist = (e: any) => {
+  const handleChecklist = async (e: any) => {
     let tsymptomList: string[] = [];
     Object.entries(state).map(([sym, yes]) => {
-
       if (yes)
         tsymptomList.push(sym.toString());
 
     });
-
     e.preventDefault();
-    const res = fetch("http://localhost:5000/sendSymptomCheckList", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(tsymptomList)
-    });
-    res
-      .then(data => data.json())
-      .then((data: any) => {
-        if (data.msg === 1) {
+    const res = await requestPost("http://localhost:5000/sendSymptomCheckList", tsymptomList);
+    const jsonResult = await res.json();
+        if (jsonResult.msg === 1) {
           // console.log(data.dataArr);
-          setdetail(data.dataArr);
+          setdetail(jsonResult.dataArr);
           alert("Sympotm sent! Waiting for the result!");
         } else {
-          alert(data.msg);
+          alert(jsonResult.msg);
         }
-      });
   }
 
   return (

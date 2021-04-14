@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { requestGet} from "../../../utils/request";
 import { makeStyles } from "@material-ui/core/styles";
 import AppContext from "../../../context/AppContext";
 import {
@@ -27,20 +28,17 @@ export default function CheckVitalSigns() {
     retrieveVitalSigns();
   }, []);
 
-  const retrieveVitalSigns = () => {
-    const res = fetch("http://localhost:5000/getVitalSigns")
-      .then((data) => data.json())
-      .then((data: any) => {
-        console.log(data);
-        if (data.msg == 1) {
+  const retrieveVitalSigns = async () => {
+    const res = await requestGet("http://localhost:5000/getVitalSigns");
+    const jsonResult = await res.json();
+        if (jsonResult.msg == 1) {
           setVitalSigns({
             ...vitalSigns,
-            vitalSignsarray: data.dataArr,
+            vitalSignsarray: jsonResult.dataArr,
           });
         } else {
-          alert(data.msg);
+          alert(jsonResult.msg);
         }
-      });
   };
 
   return (

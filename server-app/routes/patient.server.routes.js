@@ -1,10 +1,11 @@
 var patient = require('../controllers/patient.server.controller');
+var auth = require('../middleware/auth');
 
 module.exports = function(app){
     
-    app.get("/getMotivationalTips", patient.getMotivationalTipsRender);
+    app.get("/getMotivationalTips",auth, patient.getMotivationalTipsRender);
     
-    app.post('/sendEmergencyAlert', patient.sendEmergencyAlert);
+    app.post('/sendEmergencyAlert',auth, patient.sendEmergencyAlert);
 
-    app.post('/sendSymptomCheckList',patient.commonSignsChecklist);
+    app.post('/sendSymptomCheckList', auth, patient.commonSignsChecklist);
 };
