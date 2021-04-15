@@ -49,7 +49,6 @@ export default function PatientHomepage() {
         <Tab style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }} label="Daily Tips" />
         <Tab style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }} label="Emergency Alert" />
         <Tab style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }} label="Daily Infomation" />
-        <Tab style={{ fontFamily: "georgia", fontWeight: 'bold', color: 'black' }} label="Common Signs Checklist" />
       </Tabs>
       <TabPanel value={value} index={0}>
         <ReadMotivationalTips />
